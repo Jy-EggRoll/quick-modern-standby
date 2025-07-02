@@ -1,35 +1,23 @@
-# 快速调用现代待机
+# 快速调用现代待机 | Quick Modern Standby
 
-**功能**：通过模拟快捷键操作，实现退出MyKeymap（这是我个人的需求，如果软电脑上没有此软件，通常不会产生任何效果），并在等待两秒后尝试让系统进入现代待机状态。
+## 说明 | Note
+
+目前，本软件仅适用于 x64 Windows 系统。如果发现有支持 ARM64 的相关脚本，欢迎提出 issue。理论上来说，ARM64 架构应该可以转义运行本软件。通常情况下，x86 Windows 必定不支持现代待机，维护 x86 版本没有意义。
+
+Now, this software is only suitable for x64 Windows systems. If you find any scripts that support ARM64, please feel free to open an issue. In theory, ARM64 architecture should be able to run this software. Generally, x86 Windows does not support modern standby, so maintaining an x86 version is not meaningful.
 
 **运行要求**：保证软件目录结构正确。
 
-## 用法
+**Requirements**: Ensure the software directory structure is correct.
+
+## 用法 | Usage
 
 下载最新的 Release 压缩包，把软件解压到任意目录下，对其中的 `quick-modern-standy.exe` 创建快捷方式到任意地方，双击即可在两秒后调用现代待机功能。
 
-## 代码
-
-代码实在是非常简单，我直接写在下面。
-
-```python
-import subprocess
-import time
-import pyautogui
-
-
-pyautogui.hotkey("alt", "shift", "e")  # 用户自定义的退出 MyKeymap 的快捷键
-time.sleep(2)  # 等待两秒再操作，防止因为鼠标移动导致进入现代待机又马上被唤醒
-subprocess.run(["psshutdown64.exe", "-x"])  # 如果系统支持，将进入现代待机状态
-
-```
-
-Release 中的软件采用 PyInstaller 构建。
-
-```python
-pyinstaller -w --onefile quick-modern-standby.py
-```
+Download the latest Release zip file, extract the software to any directory, create a shortcut for `quick-modern-standby.exe` anywhere, and double-click it to invoke the modern standby function after two seconds.
 
 ---
 
-注：[PsShutdown](https://learn.microsoft.com/zh-cn/sysinternals/downloads/psshutdown) 是 Sysinternals 工具集的一部分，Sysinternals 由 Mark Russinovich 和 Bryce Cogswell 创建，后被微软收购，所以可视为微软产品。鉴于人人都可以下载该软件，方便起见，我集成了此软件，并未对其进行任何修改。
+注：[PsShutdown](https://learn.microsoft.com/zh-cn/sysinternals/downloads/psshutdown) 是 Sysinternals 工具集的一部分，Sysinternals 由 Mark Russinovich 和 Bryce Cogswell 创建，后被微软收购，所以可视为微软产品。鉴于人人都可以下载该软件，方便起见，我直接集成了此软件，并未对其进行任何修改。
+
+Note: [PsShutdown](https://learn.microsoft.com/zh-cn/sysinternals/downloads/psshutdown) is part of the Sysinternals suite, created by Mark Russinovich and Bryce Cogswell, and later acquired by Microsoft, so it can be considered a Microsoft product. Since everyone can download this software, for convenience, I have directly integrated it without making any modifications.

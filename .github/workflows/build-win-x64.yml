@@ -2,11 +2,11 @@ name: build-win-x64
 
 on:
   push:
-    branches: [ main ]  # 推送到 main 分支时触发
+    branches: [ main ]
 
 jobs:
   build:
-    runs-on: windows-latest  # 使用 Ubuntu 环境
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -15,16 +15,29 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'  # 使用稳定版本
 
       - name: Install dependencies
         run: pip install pyinstaller
 
       - name: Build executable
-        run: pyinstaller -w --onefile quick-modern-standby.py
+        run: pyinstaller -w --onefile --icon=standby.ico quick-modern-standby.py
+
+      - name: Create distribution directory
+        run: mkdir dist-output  # 创建输出目录
+
+      - name: Copy files to distribution directory
+        run: |
+          copy dist\quick-modern-standby.exe dist-output\
+          copy psshutdown64.exe dist-output\
+
+      - name: Compress files into zip
+        run: |
+          cd dist-output
+          tar -a -c -f ..\release.zip *
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: quick-modern-standby
-          path: dist/  # 打包输出路径
+          name: actions-result
+          path: release.zip  # 上传压缩包
