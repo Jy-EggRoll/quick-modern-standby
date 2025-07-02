@@ -31,13 +31,13 @@ jobs:
           copy dist\quick-modern-standby.exe dist-output\
           copy psshutdown64.exe dist-output\
 
-      - name: Compress files into zip
-        run: |
-          cd dist-output
-          tar -a -c -f ..\release.zip *
+      - name: Generate timestamp
+        id: timestamp
+        shell: bash  # 使用 bash 解析日期命令
+        run: echo "timestamp=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
 
-      - name: Upload artifact
+      - name: Upload artifact with timestamp
         uses: actions/upload-artifact@v4
         with:
-          name: actions-result
-          path: release.zip  # 上传压缩包
+          name: actions-result-${{ env.timestamp }}
+          path: dist-output/
