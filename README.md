@@ -16,6 +16,11 @@ Now, this software is only suitable for x64 Windows systems. If you find any scr
 
 Download the latest Release zip file, extract the software to any directory, create a shortcut for `quick-modern-standby.exe` anywhere, and double-click it to invoke the modern standby function after two seconds.
 
+## 更新历史 | Change Log
+
+- 2025.07 2.0 版本，删除了无用的快捷键，开始使用 GitHub Actions 构建 | Version 2.0 released in July 2025, removed unnecessary hotkeys, started using GitHub Actions for builds.
+- 2025.02 1.0 版本，实现了基本功能 | Version 1.0 released in February 2025, implementing basic functionality.
+
 ---
 
 注：[PsShutdown](https://learn.microsoft.com/zh-cn/sysinternals/downloads/psshutdown) 是 Sysinternals 工具集的一部分，Sysinternals 由 Mark Russinovich 和 Bryce Cogswell 创建，后被微软收购，所以可视为微软产品。鉴于人人都可以下载该软件，方便起见，我直接集成了此软件，并未对其进行任何修改。

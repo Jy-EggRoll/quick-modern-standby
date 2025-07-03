@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'  # 使用稳定版本
+          python-version: '3.12'  # 使用 3.12 版本
 
       - name: Install dependencies
         run: pip install pyinstaller
@@ -34,7 +34,7 @@ jobs:
       - name: Generate timestamp
         id: timestamp
         shell: bash  # 使用 bash 解析日期命令
-        run: echo "timestamp=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
+        run: echo "timestamp=$(date +'%Y%m%d')" >> $GITHUB_ENV
 
       - name: Upload artifact with timestamp
         uses: actions/upload-artifact@v4
