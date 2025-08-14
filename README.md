@@ -2,7 +2,7 @@
 
 ## 说明 | Note
 
-目前，本软件仅适用于 x64 Windows 系统。如果发现有支持 ARM64 的相关脚本，欢迎提出 issue。理论上来说，ARM64 架构应该可以转义运行本软件。通常情况下，x86 Windows 必定不支持现代待机，维护 x86 版本没有意义。
+目前，本软件仅适用于 x64 Windows 系统。如果发现有支持 ARM64 的相关脚本，欢迎提出 issue。理论上来说，ARM64 架构应该可以转译运行本软件。通常情况下，x86 Windows 必定不支持现代待机，维护 x86 版本没有意义。
 
 Now, this software is only suitable for x64 Windows systems. If you find any scripts that support ARM64, please feel free to open an issue. In theory, ARM64 architecture should be able to run this software. Generally, x86 Windows does not support modern standby, so maintaining an x86 version is not meaningful.
 
